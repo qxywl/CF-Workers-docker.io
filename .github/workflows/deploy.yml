@@ -1,0 +1,17 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches: [ "main" ] # 指定触发分支
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # 检出代码
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }} # 使用刚才设置的Secret
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: deploy _worker.js # 明确部署你的文件
