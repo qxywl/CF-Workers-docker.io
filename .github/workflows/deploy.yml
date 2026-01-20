@@ -14,4 +14,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }} # 使用刚才设置的Secret
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: deploy _worker.js # 明确部署你的文件
+          command: deploy --entry _worker.js
